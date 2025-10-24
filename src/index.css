@@ -1,0 +1,441 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --app-background: 220 26% 94%; /* Slightly darker for more contrast */
+
+    --card: 220 15% 98%; /* Very light tint for subtle contrast */
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 234 89% 74%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 242 83% 98%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 70% 40%;
+    --success-foreground: 210 40% 98%;
+    --success-soft: 142 60% 88%;
+    --success-soft-foreground: 142 40% 25%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 234 89% 74%;
+
+    /* Table design tokens */
+    --table-header: 0 0% 100%;          /* Pure white header */
+    --table-row-alt: 234 89% 98.5%;     /* Ultra light primary */
+    --table-border: 234 89% 96%;        /* Very subtle primary border */
+    --table-separator: 234 89% 97%;     /* Almost invisible primary separator */
+    --text-strong: 222.2 84% 4.9%;      /* #0f172a */
+    --text-muted-2: 215 16% 47%;        /* ~#475569 */
+    --danger-soft: 0 93% 94%;           /* #fee2e2 */
+    --danger-strong: 0 72% 40%;         /* ~#b91c1c */
+
+    /* Sidebar variables */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 234 89% 74%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 234 89% 74%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --app-background: 222.2 84% 4.9%; /* Keep same as background in dark mode */
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 234 89% 74%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 70% 40%;
+    --success-foreground: 210 40% 98%;
+    --success-soft: 142 60% 88%;
+    --success-soft-foreground: 142 40% 25%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 234 89% 74%;
+
+    /* Sidebar variables dark mode */
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 234 89% 74%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 234 89% 74%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  #root {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Animations */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  /* Responsive utilities */
+  .responsive-container {
+    @apply w-full max-w-full px-4 mx-auto;
+  }
+
+  .responsive-grid {
+    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .responsive-text {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  .responsive-padding {
+    @apply p-3 sm:p-4 lg:p-6;
+  }
+
+  .responsive-margin {
+    @apply m-3 sm:m-4 lg:m-6;
+  }
+
+  /* Modern table utilities */
+  .modern-table {
+    @apply bg-white rounded-lg shadow-sm border border-border overflow-hidden;
+  }
+  
+  .modern-table-header {
+    @apply bg-white border-b-2;
+    border-bottom-color: hsl(var(--table-separator));
+  }
+  
+  .modern-table-row {
+    @apply border-b hover:bg-muted/30 transition-colors duration-200;
+    border-bottom-color: hsl(var(--table-separator));
+  }
+  
+  .modern-table-row:nth-child(even) {
+    background-color: hsl(var(--table-row-alt));
+  }
+  
+  .modern-table-row:hover {
+    background-color: hsl(var(--primary) / 0.05) !important;
+  }
+  
+  .modern-table-cell {
+    @apply px-4 py-3 text-sm;
+  }
+  
+  .modern-table-header-cell {
+    @apply px-4 py-3 text-sm font-semibold text-foreground;
+  }
+  
+  /* Legacy table utilities for backward compatibility */
+  .bg-table-header { background-color: hsl(var(--table-header)); }
+  .bg-row-alt { background-color: hsl(var(--table-row-alt)); }
+  .text-strong { color: hsl(var(--text-strong)); }
+  .text-muted-2 { color: hsl(var(--text-muted-2)); }
+  .border-row { border-bottom-color: hsl(var(--table-separator)); }
+  .bg-danger-soft { background-color: hsl(var(--danger-soft)); }
+  .text-danger-strong { color: hsl(var(--danger-strong)); }
+}
+
+/* Deep Search Content Styles */
+.deep-search-content {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.deep-search-content table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.deep-search-content thead {
+  background-color: #f8fafc;
+}
+
+.deep-search-content th,
+.deep-search-content td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  word-wrap: break-word;
+  max-width: 200px;
+}
+
+.deep-search-content th:last-child,
+.deep-search-content td:last-child {
+  border-right: none;
+}
+
+.deep-search-content tr:last-child td {
+  border-bottom: none;
+}
+
+.deep-search-content th {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.deep-search-content td {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.deep-search-content tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Styles spécifiques pour les tableaux Markdown convertis */
+.deep-search-content .markdown-table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.deep-search-content .markdown-table thead {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.deep-search-content .markdown-table th {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  border-bottom: 2px solid #cbd5e1;
+  border-right: 1px solid #cbd5e1;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  word-wrap: break-word;
+  max-width: 150px;
+}
+
+.deep-search-content .markdown-table th:last-child {
+  border-right: none;
+}
+
+.deep-search-content .markdown-table td {
+  padding: 0.875rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.5;
+  vertical-align: top;
+  word-wrap: break-word;
+  max-width: 150px;
+}
+
+.deep-search-content .markdown-table td:last-child {
+  border-right: none;
+}
+
+.deep-search-content .markdown-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.deep-search-content .markdown-table tbody tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.15s ease;
+}
+
+.deep-search-content .markdown-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive design pour les tableaux */
+@media (max-width: 768px) {
+  .deep-search-content table,
+  .deep-search-content .markdown-table {
+    font-size: 0.75rem;
+    min-width: 300px;
+  }
+  
+  .deep-search-content th,
+  .deep-search-content td,
+  .deep-search-content .markdown-table th,
+  .deep-search-content .markdown-table td {
+    padding: 0.5rem 0.375rem;
+    max-width: 120px;
+  }
+}
+
+.deep-search-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.deep-search-content h1 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.deep-search-content h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  word-wrap: break-word;
+}
+
+.deep-search-content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+}
+
+.deep-search-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.deep-search-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.deep-search-content li {
+  margin-bottom: 0.25rem;
+  word-wrap: break-word;
+}
+
+.deep-search-content strong {
+  font-weight: 600;
+}
+
+.deep-search-content em {
+  font-style: italic;
+}
+
+.deep-search-content code {
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: monospace;
+  word-wrap: break-word;
+}
+
+.deep-search-content blockquote {
+  border-left: 4px solid #d1d5db;
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1rem 0;
+  color: #6b7280;
+}
+
+/* Responsive breakpoints utilities */
+@media (max-width: 640px) {
+  .responsive-container {
+    @apply px-2;
+  }
+  
+  .responsive-padding {
+    @apply p-2;
+  }
+  
+  .responsive-margin {
+    @apply m-2;
+  }
+}
